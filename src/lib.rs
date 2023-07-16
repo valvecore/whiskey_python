@@ -131,7 +131,7 @@ pub mod general_functions {
         return Ok(());
 
     }
-    //adds the whiskey_wine_dir name to the provided path str
+    //adds the whiskey python directory name to the provided path str
     pub fn add_whiskey_files_dir_to_path(path:&str)->String{
         
         use super::whiskey_python_file_paths::*;
@@ -420,7 +420,13 @@ pub mod init_whiskey_python{
     //this function returns a bool if the whiskey python compiled files exist 
     pub fn check_if_whiskey_python_files_exist(compiled_scripts:&CompiledScripts)->bool{
         
-        return std::path::Path::new(&compiled_scripts.path).exists();
+        use super::general_functions::*;
+        
+
+
+        return std::path::Path::new(
+            &add_whiskey_files_dir_to_path(
+                &compiled_scripts.path)).exists();
         
     }
     
